@@ -38,9 +38,18 @@ $export->get = new Export(
         'omg' => function() {
             return $this->parent()->user['omg'];
         },
+    ]
+);
 
-        'bar' => function() {
-            return $this->parent()->masterObj->bar();
+$export->get->bar = new Export(
+    $export,
+    [
+        'className' => function() {
+            return get_class($this->parent()->masterObj);
+        },
+
+        'calledClass' => function() {
+            return get_called_class();
         },
     ]
 );
@@ -54,10 +63,30 @@ $export->set = new Export(
     ]
 );
 
-var_dump( assert('$export->get->name() === "dieselcode"', 'Name should equal dieselcode') );
-$export->set->name('foo');
-var_dump( assert('$export->get->name() === "foo"', 'Name should equal foo') );
+
+var_dump(assert(
+    '$export->get->name() === "dieselcode"',
+    'Name should equal dieselcode'
+));
+
+$export->set->name('evilwalrus');
+
+var_dump(assert(
+    '$export->get->name() === "evilwalrus"',
+    'Name should equal to evilwalrus'
+));
+
+var_dump(assert(
+    '$export->get->bar->className() === "Foo"',
+    'Class name should be one of Foo'
+));
+
+var_dump(assert(
+    '$export->get->bar->calledClass() === "Export"',
+    'Called class should be one of Export'
+));
 
 echo PHP_EOL . `php -v`;
+
 
 ?>
