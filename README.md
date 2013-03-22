@@ -1,4 +1,4 @@
-![Tungsten](http://php-oop.net/~andrew/logos/Tungsten.png)
+![Tungsten](http://php-oop.net/~andrew/logos/Tungsten-sm.png)
 
 Tungsten
 ========
