@@ -1,0 +1,24 @@
+{
+    "name": "dieselcode/Tungsten",
+    "type": "library",
+    "description": "Tungsten Javascript-like Objects for PHP",
+    "keywords": ["php","javascript","object"],
+    "homepage": "http://github.com/dieselcode/Tungsten",
+    "license": "LGPL",
+    "authors": [
+        {
+            "name": "Andrew Heebner",
+            "email": "andrew.heebner@gmail.com",
+            "homepage": "http://github.com/dieselcode",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.8"
+    },
+    "autoload": {
+        "psr-0": {
+            "Tungsten": "src"
+        }
+    }
+}
