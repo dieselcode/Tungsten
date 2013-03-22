@@ -39,7 +39,7 @@ class Object extends \ArrayObject
 
         if ($this->object->offsetExists($key)) {
             $value = $this->object->offsetGet($key);
-        } elseif (!empty($this->parent)) && is_object($this->parent->object)) {
+        } elseif (!empty($this->parent) && is_object($this->parent->object)) {
             $value = $this->parent->object->{$key};
         }
 
