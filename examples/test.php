@@ -38,6 +38,10 @@ $export->get = new Export(
         'omg' => function() {
             return $this->parent()->user['omg'];
         },
+
+        'masterObj' => function() {
+            return $this->parent()->masterObj->value;
+        },
     ]
 );
 
@@ -59,6 +63,10 @@ $export->set = new Export(
     [
         'name' => function ($value) {
             $this->parent()->user['name'] = $value;
+        },
+
+        'masterObj' => function($value) {
+            $this->parent()->masterObj->value = $value;
         },
     ]
 );
@@ -85,6 +93,14 @@ var_dump(assert(
     '$export->get->bar->calledClass() === "Export"',
     'Called class should be one of Export'
 ));
+
+$export->set->masterObj('foo');
+
+var_dump(assert(
+    '$export->get->masterObj() === "foo"',
+    'masterObj value should be "foo"'
+));
+
 
 echo PHP_EOL . `php -v`;
 
